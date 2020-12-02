@@ -1,11 +1,18 @@
-# Bubble-sort
-This is the first project of Ruby, Advanced Building Blocks - Bubble Sort
-# Bubble Sort Algorithms
-
-> Implementation of bubble_sort and bubble sort by algorithms as outlined [here](https://github.com/TheOdinProject/curriculum/blob/master/ruby_programming/archive/basic_ruby/project_advanced_building_blocks.md#assignment-1) by the Odin Project.
+# Enumerable Methods
 
 
-A sorting algorithm that takes an array of elements as input, each element is then compared to the one next to it and they are swapped if the one on the left is larger than the one on the right. This continues until the array is eventually sorted.
+> Implementation of enumerable methods [here](https://github.com/TheOdinProject/curriculum/blob/master/archive/old_lessons/ruby/basic_ruby/project_advanced_building_blocks.md#project-2-enumerable-methods) by the Odin Project.
+
+
+In this project, we implemented our version of Ruby’s enumerable methods. The methods that we created are:
+- each
+- each_with_index
+- select
+- all?
+- none?
+- count
+- map
+- inject
 
 ## Built With
 
@@ -16,7 +23,7 @@ A sorting algorithm that takes an array of elements as input, each element is th
 To run this project locally, please ensure you have Ruby installed on your machine, then clone this repository by running.
 
 ```bash
-git clone https://github.com/mricanho/Bubble-sort
+git clone https://github.com/mricanho/enumerables.git
 ```
 
 After cloning open the file and write in terminal :
@@ -26,7 +33,7 @@ After cloning open the file and write in terminal :
 ```
 The code:
 
-![screenshot](./code-.png)
+![screenshot](./code.png)
 
 The result in terminal:
 
