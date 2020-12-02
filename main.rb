@@ -61,6 +61,7 @@ module Enumerable
     my_each { |i| return false if yield(i) }
     true
   end
+
   def my_count(*arg)
     count = 0
     unless block_given?
@@ -73,14 +74,26 @@ module Enumerable
     my_each { |x| count += 1 if yield(x) }
     count
   end
+
+  def my_map(proc = nil)
+    return to_enum(:my_map) unless block_given? || !proc.nil?
+
+    arr = []
+    if proc.nil?
+      to_a.my_each { |item| arr << yield(item) }
+    else
+      to_a.my_each { |item| arr << proc.call(item) }
+    end
+    arr
+  end
 end
 
 array = [2, 52, 6, 9, 6, 14, 10, 30, 5]
-arrays = ["yes", "no", 9, "maybe", nil, "I don't know", 85.5]
-array.my_each { |x| puts x ** 2 }
-arrays.my_each_with_index {|value, index| puts "#{index} item is #{value};" }
+arrays = ['yes', 'no', 9, 'maybe', nil, "I don't know", 85.5]
+array.my_each { |x| puts x**2 }
+arrays.my_each_with_index { |value, index| puts "#{index} item is #{value};" }
 array.my_select { |x| p x.odd? }
 arrays.my_any? { |x| puts x.is_a? Numeric }
-puts array.my_count {|x| x < 10}
-p array.my_map {|x | x * 2 }
+puts array.my_count { |x| x < 10 }
+p array.my_map { |x| x * 2 }
 p array.my_inject(0, :+)
