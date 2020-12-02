@@ -33,7 +33,7 @@ After cloning open the file and write in terminal :
 ```
 The code:
 
-![screenshot](./code.png)
+![screenshot](./code.jpeg)
 
 
 👤 **Miguel Ricaño*

@@ -1,3 +1,4 @@
+# rubocop: disable Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity
 module Enumerable
   def my_each
     x = 0
@@ -111,12 +112,4 @@ module Enumerable
   end
 end
 
-array = [2, 52, 6, 9, 6, 14, 10, 30, 5]
-arrays = ['yes', 'no', 9, 'maybe', nil, "I don't know", 85.5]
-array.my_each { |x| puts x**2 }
-arrays.my_each_with_index { |value, index| puts "#{index} item is #{value};" }
-array.my_select { |x| p x.odd? }
-arrays.my_any? { |x| puts x.is_a? Numeric }
-puts array.my_count { |x| x < 10 }
-p array.my_map { |x| x * 2 }
-p array.my_inject(0, :+)
+# rubocop: enable Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity
