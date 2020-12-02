@@ -35,9 +35,6 @@ The code:
 
 ![screenshot](./code.png)
 
-The result in terminal:
-
-![screenshot](./screenshot-result.jpeg)
 
 👤 **Miguel Ricaño*
 

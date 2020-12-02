@@ -61,33 +61,26 @@ module Enumerable
     my_each { |i| return false if yield(i) }
     true
   end
+  def my_count(*arg)
+    count = 0
+    unless block_given?
+      if include?(arg)
+        my_each { |x| count += 1 if x == arg }
+        return count
+      end
+      return arg.length
+    end
+    my_each { |x| count += 1 if yield(x) }
+    count
+  end
 end
 
-puts '1.--------my_each--------'
-%w[Sharon Leo Leila Brian Arun].my_each { |friend| puts friend }
-puts '2.--------my_each_with_index--------'
-%w[Sharon Leo Leila Brian Arun].my_each_with_index { |friend, index| puts friend if index.even? }
-puts '3.--------my_select--------'
-puts(%w[Sharon Leo Leila Brian Arun].my_select { |friend| friend != 'Brian' })
-puts '4.--------my_all--------'
-puts(%w[ant bear cat].my_all? { |word| word.length >= 3 }) #=> true
-puts(%w[ant bear cat].my_all? { |word| word.length >= 4 }) #=> false
-puts %w[ant bear cat].my_all?(/t/) #=> false
-puts [1, 2i, 3.14].my_all?(Numeric) #=> true
-puts [].my_all? #=> true
-puts '5.--------my_any--------'
-puts(%w[ant bear cat].my_any? { |word| word.length >= 3 }) #=> true
-puts(%w[ant bear cat].my_any? { |word| word.length >= 4 }) #=> true
-puts %w[ant bear cat].my_any?(/d/) #=> false
-puts [nil, true, 99].my_any?(Integer) #=> true
-puts [nil, true, 99].my_any? #=> true
-puts [].my_any? #=> false
-puts '6.--------my_none--------'
-puts(%w[ant bear cat].my_none? { |word| word.length == 5 }) #=> true
-puts(%w[ant bear cat].my_none? { |word| word.length >= 4 }) #=> false
-puts %w[ant bear cat].my_none?(/d/) #=> true
-puts [1, 3.14, 42].my_none?(Float) #=> false
-puts [].my_none? #=> true
-puts [nil].my_none? #=> true
-puts [nil, false].my_none? #=> true
-puts [nil, false, true].my_none? #=> false
+array = [2, 52, 6, 9, 6, 14, 10, 30, 5]
+arrays = ["yes", "no", 9, "maybe", nil, "I don't know", 85.5]
+array.my_each { |x| puts x ** 2 }
+arrays.my_each_with_index {|value, index| puts "#{index} item is #{value};" }
+array.my_select { |x| p x.odd? }
+arrays.my_any? { |x| puts x.is_a? Numeric }
+puts array.my_count {|x| x < 10}
+p array.my_map {|x | x * 2 }
+p array.my_inject(0, :+)
